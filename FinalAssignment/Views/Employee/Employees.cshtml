@@ -1,0 +1,57 @@
+﻿@model List<FinalAssignment.Models.EmployeeModel>
+@{
+    ViewData["Title"] = "Employees";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@if (ViewBag.message != null)
+{
+    <p class="message bg-primary" id="successMessage">@ViewBag.message</p>
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <a class="btn btn-primary big text-white float-right" asp-action="AddEmployee"><b>Add Employee</b></a>
+    </div>
+    <div class="col-sm-12 mt-sm-3">
+        <table class="table table-striped">
+            <thead class="font-weight-bold">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Dept</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Joining Date</th>
+                    <th>Is Active</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>1</td>
+                        <td>@item.EmployeeName</td>
+                        <td>@item.Age</td>
+                        <td>@item.Email</td>
+                        <td class="mobile">@item.PhoneNumber</td>
+                        <td>@item.Departdment</td>
+                        <td>@item.City</td>
+                        <td>@item.State</td>
+                        <td>@item.JoiningDate.ToString("MM/dd/yyyy")</td>
+                        <td>@item.Status</td>
+                        <td><a asp-action="EditEmployee" asp-route-id="@item.EmployeeId"><i class="fa fa-edit p-sm-1"></i></a><a asp-action="DeleteEmployee" asp-route-id="@item.EmployeeId" onclick="return confirm('Are sure wants to delete?');"><i class="fa fa-trash p-sm-1"></i></a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-12 mt-sm-5">
+        <a class="btn btn-primary big text-white" asp-action="Appraisals"><b>Appraisals</b></a>
+    </div>
+</div>
+

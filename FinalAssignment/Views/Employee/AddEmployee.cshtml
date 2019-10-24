@@ -1,0 +1,109 @@
+﻿@model  FinalAssignment.Models.EmployeeModel
+@{
+    ViewData["Title"] = "Add Employee";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+    <form class="form-horizontal" asp-action="AddEmployee" method="post">
+        <div class="row m-sm-2">
+            <label class="control-label col-sm-2" asp-for="EmployeeName"></label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" asp-for="EmployeeName">
+            </div>
+            <span class="col-sm-3 text-danger small" asp-validation-for="EmployeeName"></span>
+        </div>
+        <div class="row m-sm-2">
+            <label class="control-label col-sm-2" asp-for="DateOfBirth"></label>
+            <div class="col-sm-5">
+                <div class="input-group">
+                    <input type="text" class="form-control input-group-btn datepickerDOB" asp-for="DateOfBirth" autocomplete="off">
+                    <div class="input-group-append">
+                        <span class="input-group-text showdatepicker"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+            <span class="col-sm-3 text-danger small" asp-validation-for="DateOfBirth"></span>
+        </div>
+        <div class="row m-sm-2">
+            <label class="control-label col-sm-2" asp-for="PhoneNumber"></label>
+            <div class="col-sm-5">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                    </div>
+                    <input type="text" class="form-control mobile" asp-for="PhoneNumber">
+                </div>
+            </div>
+            <span class="col-sm-3 text-danger small" asp-validation-for="PhoneNumber"></span>
+        </div>
+        <div class="row m-sm-2">
+            <label class="control-label col-sm-2" asp-for="Email"></label>
+            <div class="col-sm-5">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                    </div>
+                    <input type="text" class="form-control" asp-for="Email">
+                </div>
+            </div>
+            <span class="col-sm-3 text-danger small" asp-validation-for="Email"></span>
+        </div>
+        <div class="row m-sm-2">
+            <label class="control-label col-sm-2" asp-for="DepartmentId"></label>
+            <div class="col-sm-5">
+                <select class="form-control" asp-items="@ViewBag.Departments" asp-for="DepartmentId" >
+                    <option value=""> -- Department --</option>
+                </select>
+            </div>
+            <span class="col-sm-3 text-danger small" asp-validation-for="DepartmentId"></span>
+        </div>
+        <div class="row m-sm-2">
+            <label class="control-label col-sm-2" asp-for="Address"></label>
+            <div class="col-sm-5">
+                <textarea class="form-control" asp-for="Address"></textarea>
+            </div>
+            <span class="col-sm-3 text-danger small" asp-validation-for="Address"></span>
+        </div>
+        <div class="row m-sm-2">
+            <label class="control-label col-sm-2" asp-for="StateId"></label>
+            <div class="col-sm-5">
+                <select class="form-control state" asp-items="@ViewBag.States" asp-for="StateId">
+                    <option value=""> -- State --</option>
+                </select>
+            </div>
+            <span class="col-sm-3 text-danger small" asp-validation-for="StateId"></span>
+        </div>
+        <div class="row m-sm-2">
+            <label class="control-label col-sm-2" asp-for="CityId"></label>
+            <div class="col-sm-5">
+                <select class="form-control city" asp-for="CityId">
+                    <option value=""> -- City --</option>
+                </select>
+            </div>
+            <span class="col-sm-3 text-danger small" asp-validation-for="CityId"></span>
+        </div>
+        <div class="row m-sm-2">
+            <label class="control-label col-sm-2" asp-for="Zip"></label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control zip" asp-for="Zip">
+            </div>
+            <span class="col-sm-3 text-danger small" asp-validation-for="Zip"></span>
+        </div>
+        <div class="row m-sm-2">
+            <label class="control-label col-sm-2" asp-for="JoiningDate"></label>
+            <div class="col-sm-5">
+                <div class="input-group">
+                    <input type="text" class="form-control joiningdatepicker" asp-for="JoiningDate"  autocomplete="off">
+                    <div class="input-group-append">
+                        <span class="input-group-text showdatepicker"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+            <span class="col-sm-3 text-danger small" asp-validation-for="JoiningDate"></span>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-7">
+                <a class="btn float-right m-sm-1" asp-action="Employees">Cancel</a>
+                <button type="submit" class="btn btn-primary float-right m-sm-1">Submit</button>
+            </div>
+        </div>
+    </form>

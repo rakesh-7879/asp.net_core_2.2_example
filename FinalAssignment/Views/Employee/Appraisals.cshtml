@@ -1,0 +1,41 @@
+﻿@model  List<FinalAssignment.Models.AppraisalModel>
+@{
+    ViewData["Title"] = "Appraisals";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <a class="btn btn-primary big text-white float-right" asp-action="AddAppraisal"><b>Add Appraisal</b></a>
+    </div>
+    <div class="col-sm-12 mt-sm-3">
+        <table class="table table-striped">
+            <thead>
+
+                <tr>
+                    <th>#</th>
+                    <th>Employee Name</th>
+                    <th>Current Appraisals</th>
+                    <th>Next Appraisals</th>
+                    <th>Remark</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>1</td>
+                        <td>@item.EmployeeName</td>
+                        <td>@item.CurrentAppraisal.ToString("MMM/yyyy")</td>
+                        <td>@item.NextAppraisal.ToString("MMM/yyyy")</td>
+                        <td>@item.Remark</td>
+                        <td><a asp-action="AppraisalDetails" asp-route-id="@item.AppraisalId">Details</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
